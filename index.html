@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ONG Esperança</title>
+    <link rel="stylesheet" href="/css/estilos.css">
+</head>
+
+<body>
+
+    <!-- Skip link: primeiro elemento focável da página, permite pular
+         direto para o conteúdo sem passar por todo o menu a cada tela -->
+    <a href="#app" class="skip-link">Pular para o conteúdo principal</a>
+
+    <header class="cabecalho">
+        <h1>ONG Esperança</h1>
+
+        <input type="checkbox" id="menu-toggle" class="menu-toggle-input"
+               aria-label="Abrir menu de navegação">
+        <label for="menu-toggle" class="botao-menu" aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
+
+        <nav aria-label="Navegação principal">
+            <ul class="nav-lista">
+                <li><a href="#inicio">Início</a></li>
+                <li class="tem-submenu">
+                    <a href="#projetos" aria-haspopup="true">Projetos</a>
+                    <ul class="submenu">
+                        <li><a href="#doacoes">Doações</a></li>
+                        <li><a href="#voluntariado">Voluntariado</a></li>
+                    </ul>
+                </li>
+                <li><a href="#cadastro">Cadastro</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Único contêiner que muda de conteúdo a cada "navegação" da SPA.
+         aria-live="polite" faz leitores de tela anunciarem automaticamente
+         a troca de conteúdo a cada navegação, já que não há recarregamento
+         de página (que normalmente dispara essa leitura sozinho). -->
+    <main id="app" class="container" tabindex="-1" aria-live="polite"></main>
+
+    <footer class="rodape">
+        <p>&copy; 2026 ONG Esperança. Todos os direitos reservados.</p>
+    </footer>
+
+    <!-- Módulos utilitários primeiro -->
+    <script src="/js/modules/dom.js"></script>
+    <script src="/js/modules/router.js"></script>
+    <script src="/js/modules/validacao.js"></script>
+    <script src="/js/modules/armazenamento.js"></script>
+
+    <!-- Biblioteca externa: IMask.js (máscaras de input em tempo real) -->
+    <script src="https://cdn.jsdelivr.net/npm/imask@7.6.1/dist/imask.min.js"></script>
+
+    <script src="/js/modules/eventos.js"></script>
+
+    <!-- Templates de cada "página" -->
+    <script src="/js/templates/home.js"></script>
+    <script src="/js/templates/projetos.js"></script>
+    <script src="/js/templates/cadastro.js"></script>
+
+    <!-- Ponto de entrada, por último -->
+    <script src="/js/main.js"></script>
+
+</body>
+</html>

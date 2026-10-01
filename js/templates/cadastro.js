@@ -1,0 +1,158 @@
+/* Template da tela "Cadastro" */
+
+const Templates = window.Templates || {};
+
+Templates.cadastro = function () {
+  return `
+    <section>
+      <h2>Cadastro de apoiador</h2>
+      <p>
+        Preencha o formulário abaixo para se tornar um apoiador
+        da ONG Esperança. Os campos marcados com * são obrigatórios.
+      </p>
+
+      <div class="alerta alerta-info">
+        Seus dados são protegidos conforme a LGPD.
+        <a href="#modal-lgpd">Saiba mais</a>.
+      </div>
+
+      <form id="form-cadastro" action="#" method="post" novalidate>
+        <fieldset>
+          <legend>Dados pessoais</legend>
+
+          <div class="campo">
+            <label for="nome">Nome completo *</label><br>
+            <input type="text" id="nome" name="nome" required
+                   minlength="5" maxlength="100" autocomplete="name"
+                   placeholder="Digite seu nome completo">
+          </div>
+
+          <div class="linha-campos">
+            <div class="campo">
+              <label for="cpf">CPF *</label><br>
+              <input type="text" id="cpf" name="cpf" required
+                     inputmode="numeric"
+                     pattern="\\d{3}\\.\\d{3}\\.\\d{3}-\\d{2}"
+                     placeholder="000.000.000-00"
+                     title="Formato esperado: 000.000.000-00">
+            </div>
+
+            <div class="campo">
+              <label for="nascimento">Data de nascimento *</label><br>
+              <input type="date" id="nascimento" name="nascimento"
+                     required autocomplete="bday">
+            </div>
+          </div>
+
+          <div class="linha-campos">
+            <div class="campo">
+              <label for="email">E-mail *</label><br>
+              <input type="email" id="email" name="email" required
+                     autocomplete="email" placeholder="seuemail@exemplo.com">
+            </div>
+
+            <div class="campo">
+              <label for="telefone">Telefone / WhatsApp *</label><br>
+              <input type="tel" id="telefone" name="telefone" required
+                     inputmode="numeric"
+                     pattern="\\(\\d{2}\\)\\s\\d{4,5}-\\d{4}"
+                     placeholder="(00) 00000-0000"
+                     title="Formato esperado: (00) 00000-0000">
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Endereço</legend>
+
+          <div class="linha-campos">
+            <div class="campo">
+              <label for="cep">CEP *</label><br>
+              <input type="text" id="cep" name="cep" required
+                     inputmode="numeric" pattern="\\d{5}-\\d{3}"
+                     placeholder="00000-000"
+                     title="Formato esperado: 00000-000">
+            </div>
+
+            <div class="campo">
+              <label for="cidade">Cidade *</label><br>
+              <input type="text" id="cidade" name="cidade" required
+                     autocomplete="address-level2">
+            </div>
+
+            <div class="campo">
+              <label for="estado">Estado *</label><br>
+              <select id="estado" name="estado" required autocomplete="address-level1">
+                <option value="" disabled selected>Selecione</option>
+                <option value="SP">São Paulo</option>
+                <option value="RJ">Rio de Janeiro</option>
+                <option value="MG">Minas Gerais</option>
+                <option value="PR">Paraná</option>
+                <option value="RS">Rio Grande do Sul</option>
+                <option value="BA">Bahia</option>
+                <option value="outro">Outro</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="campo">
+            <label for="logradouro">Rua / Avenida</label><br>
+            <input type="text" id="logradouro" name="logradouro"
+                   autocomplete="address-line1"
+                   placeholder="Nome da rua, número e complemento">
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Como você deseja apoiar?</legend>
+
+          <div class="opcao-inline">
+            <input type="radio" id="apoio-doacao" name="tipo_apoio" value="doacao" required>
+            <label for="apoio-doacao">Doação financeira</label>
+          </div>
+          <div class="opcao-inline">
+            <input type="radio" id="apoio-voluntariado" name="tipo_apoio" value="voluntariado">
+            <label for="apoio-voluntariado">Voluntariado</label>
+          </div>
+          <div class="opcao-inline">
+            <input type="radio" id="apoio-divulgacao" name="tipo_apoio" value="divulgacao">
+            <label for="apoio-divulgacao">Divulgação / apoio de mídia</label>
+          </div>
+
+          <div class="campo" style="margin-top: 1rem;">
+            <label for="mensagem">Mensagem (opcional)</label><br>
+            <textarea id="mensagem" name="mensagem" rows="4" maxlength="500"
+                      placeholder="Conte um pouco sobre como você gostaria de ajudar"></textarea>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Privacidade</legend>
+          <div class="opcao-inline">
+            <input type="checkbox" id="consentimento" name="consentimento" required>
+            <label for="consentimento">
+              Autorizo o uso dos meus dados pessoais para fins de contato e cadastro,
+              conforme a Lei Geral de Proteção de Dados (LGPD). *
+            </label>
+          </div>
+        </fieldset>
+
+        <p><button type="submit">Enviar cadastro</button></p>
+      </form>
+    </section>
+
+    <div class="modal-overlay" id="modal-lgpd">
+      <div class="modal" role="dialog" aria-modal="true" aria-labelledby="titulo-modal-lgpd">
+        <h3 id="titulo-modal-lgpd">Sobre a proteção dos seus dados</h3>
+        <p>
+          Os dados coletados neste formulário são utilizados exclusivamente
+          para fins de contato e cadastro de apoiadores da ONG Esperança,
+          conforme a Lei Geral de Proteção de Dados (LGPD).
+        </p>
+        <a href="#cadastro" class="modal-fechar">Fechar</a>
+      </div>
+    </div>
+  `;
+};
+
+window.Templates = Templates;
